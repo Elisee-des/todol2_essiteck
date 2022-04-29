@@ -1,59 +1,58 @@
-import {Fragment} from 'react'
+import React, { Fragment } from "react";
 
-const InfoPersonne = (props) => (
-  <Fragment>
-    <h1>Bonjour</h1>
-    <p>Nom:  {props?.name}</p>
-    <p>Age:  {props?.age}</p>
-    <p>{`Votre nom compte ${props?.name?.length} caractère${props?.name?.length > 1 ? 's' : ''}`}</p>
-    <p>Vous avez {`${props?.age} ans`}</p>
+
+const Cv = ({ name, age }) => (
+    <Fragment>
+      <h1>Prenom :{name}</h1>
+      <h2>Age : {age}</h2>
   </Fragment>
-)
 
-const SectionContent = ({title, subTitle, children}) => {
-  return(
-    <div>
+// Etant donner que cest eux les enfants, il n'ont pas le droit de prendre *{}*
+);
+
+// const Cv = (props) => (
+//   <Fragment>
+//     <h1>Prenom :{props.name}</h1>
+//     <h2>Age : {props.age}</h2>
+// </Fragment>
+
+// );
+
+const ProfilUser = ({ title, subTitle, smsfin, children }) => {
+  return (
+    <Fragment>
       <div>
-        <h5>{title}</h5>
-        <h6>{subTitle}</h6>
+      <hr />
+        <h1>{title}</h1>
+        <h2>{subTitle}</h2>
+        <h3>{smsfin}</h3>
       </div>
       <div>{children}</div>
-    </div>
-  )
-}
-
-const MessageFromAgeStatus = ({age, name, children}) => {
-  const ageStatus = (age) => {
-    let message = "Vous avez pile l'âge de la maturité";
-    if(age > 20) {
-      message = `Vous avez passé les 20 ans il ya ${+age - 20} ans`;
-    } else if(age < 20) {
-      message = `Il vous reste ${20 - (+age)} ans pour atteindre l'age de la maturité`;
-    }
-    return message;
-  }
-  return (
-    <Fragment>
-        <p>{ageStatus(age)}</p>
-    </Fragment>
-  )
-}
-
-function App() {
-  const name = "p";
-  const age = 130;
-  return (
-    <Fragment>
-      <SectionContent title={"Information sur son profile"} subTitle={"Profil"}>
-        <InfoPersonne name={name} age={age} />
-      </SectionContent>
-      <SectionContent title={'Statut du profil'} subTitle={"Statut"}>
-        <MessageFromAgeStatus age={age} name={name}>
-          <p>Tu me vois</p>
-        </MessageFromAgeStatus>
-      </SectionContent>
+      {/* Il ne surtout pas oublier de passer les enfant en parametre pour les appeler*/}
+      <h4>{smsfin}</h4>
+      {/* <hr /> */}
     </Fragment>
   );
 }
+
+
+const App = () => {
+  const name1 = "Emille";
+  const age1 = 23;
+  const name2 = "Adrihein";
+  const age2 = 25;
+
+  return (
+    <Fragment>
+      <ProfilUser title={"Mon Profil"} subTitle={"Mes donnes presonnels"} smsfin={"fin des donnes"}>
+        <Cv name={name1} age={age1} />  
+      </ProfilUser>
+      
+      <ProfilUser title={"Mon Profil"} subTitle={"Mes donnes presonnels"} smsfin={"fin des donnes"}>
+      <Cv name={name2} age={age2} />
+      </ProfilUser>
+    </Fragment>
+  )
+};
 
 export default App;
