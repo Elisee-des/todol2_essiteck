@@ -1,0 +1,15 @@
+.value {
+    color: red;
+    font-weight: bold;
+    font-size: 11px;
+    background-color: #ebf3f3;
+    border-radius: 20px;
+    padding: 0 5px;
+}
+.rowValue {
+    border-bottom: 1px solid gray;
+    margin: 0 5px 5px;
+}
+.rowValueEnd {
+    border-bottom: none;
+}
